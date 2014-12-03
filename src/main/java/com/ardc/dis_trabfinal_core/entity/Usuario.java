@@ -1,4 +1,4 @@
-package com.ardc.dis_trabfinal_core.entity.db;
+package com.ardc.dis_trabfinal_core.entity;
 
 import java.io.Serializable;
 import java.util.Date;
