@@ -1,15 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.ardc.dis_trabfinal_core.entity;
+package com.ardc.dis_trabfinal_core.entity.database;
+
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import org.hibernate.annotations.ForeignKey;
 
 /**
- *
+ * Classe para a entidade ProfessorDB.
  * @author alvesrc
  */
-public class Professor extends Usuario{
+@Entity(name = "professor")
+@PrimaryKeyJoinColumn(name = "usuario_email")
+@ForeignKey(name = "fk_professor_usuario")
+public class ProfessorDB extends UsuarioDB implements Serializable{
     
     /**
      * Departamento acadêmico ao qual o professor está alocado.
@@ -21,6 +24,8 @@ public class Professor extends Usuario{
      */
     private String disciplinaPrincipal;
 
+    //Getters & Setters gerados automaticamente.
+    
     public String getDepartamento() {
         return departamento;
     }

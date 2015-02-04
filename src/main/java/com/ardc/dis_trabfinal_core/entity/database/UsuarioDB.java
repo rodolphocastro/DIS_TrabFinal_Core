@@ -1,16 +1,26 @@
-package com.ardc.dis_trabfinal_core.entity;
+package com.ardc.dis_trabfinal_core.entity.database;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
- * Classe para armazenar usuários do sistema.
+ * Classe para a entidade do tipo Usuário, essa classe será herdada por todas as classes que forem acessar o sistema.
  * @author alvesrc
  */
-public class Usuario {
+@Entity(name = "usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class UsuarioDB implements Serializable{
     
     /**
-     * O email do usuário.
+     * Email do usuário, chave primária da entidade.
      */
+    @Id
     protected String email;
     
     /**
@@ -19,29 +29,33 @@ public class Usuario {
     protected String nome;
     
     /**
-     * O papel do usuário no sistema.
-     */
-    protected String papel;
-    
-    /**
-     * A senha de acesso do usuário.
+     * A senha do usuário.
      */
     protected String senha;
     
     /**
-     * O atual estado do usuário.
-     */
-    protected String status;
-    
-     /**
      * A data em que o usuário foi criado.
      */
+    @Temporal(TemporalType.TIMESTAMP)
     protected Date dataCadastro;
     
     /**
      * A data em que a ultima modificação foi efetuada.
      */
+    @Temporal(TemporalType.TIMESTAMP)
     protected Date dataUltimaModificacao;
+    
+    /**
+     * O atual status do usuário no sistema.
+     */
+    protected String status;
+    
+    /**
+     * A função do usuário no sistema.
+     */
+    protected String papel;
+    
+    //Getters & Setters gerados automaticamente
 
     public String getEmail() {
         return email;
@@ -59,28 +73,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getPapel() {
-        return papel;
-    }
-
-    public void setPapel(String papel) {
-        this.papel = papel;
-    }
-
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getDataCadastro() {
@@ -98,7 +96,22 @@ public class Usuario {
     public void setDataUltimaModificacao(Date dataUltimaModificacao) {
         this.dataUltimaModificacao = dataUltimaModificacao;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPapel() {
+        return papel;
+    }
+
+    public void setPapel(String papel) {
+        this.papel = papel;
+    }
     
     
 }
