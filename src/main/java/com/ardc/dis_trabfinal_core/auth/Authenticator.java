@@ -1,4 +1,4 @@
-package com.ardc.dis_trabfinal_cure.auth;
+package com.ardc.dis_trabfinal_core.auth;
 
 import com.ardc.dis_trabfinal_core.dao.factory.DAOFactory;
 import com.ardc.dis_trabfinal_core.dao.interfaces.DAOUsuarioInterface;
