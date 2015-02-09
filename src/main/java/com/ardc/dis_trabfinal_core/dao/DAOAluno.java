@@ -3,6 +3,7 @@ package com.ardc.dis_trabfinal_core.dao;
 import com.ardc.dis_trabfinal_core.dao.interfaces.DAOAlunoInterface;
 import com.ardc.dis_trabfinal_core.entity.database.AlunoDB;
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -46,6 +47,27 @@ public class DAOAluno extends DAOGenerico implements DAOAlunoInterface{
     @Override
     public void alterar(AlunoDB aluno) {
         super.alterar(aluno);
+    }
+
+    /**
+     * Método para listar alunos com base em um projeto.
+     * @param codProjeto O código do projeto.
+     * @return Uma lista de alunos envolvidos no projeto.
+     */
+    @Override
+    public List<AlunoDB> listarPorProjeto(long codProjeto) {
+        try {
+            em = getEntityManager();
+            Query q = em.createQuery("select a from aluno a join fetch a.projetos p where p.codigo = :codigo", AlunoDB.class);
+            q.setParameter("codigo", codProjeto);
+            return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
     
 }

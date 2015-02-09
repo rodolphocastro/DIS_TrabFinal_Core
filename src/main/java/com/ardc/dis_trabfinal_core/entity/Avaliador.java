@@ -1,5 +1,7 @@
 package com.ardc.dis_trabfinal_core.entity;
 
+import java.util.List;
+
 /**
  * Classe para armazenar dados dos avaliadores.
  * @author alvesrc
@@ -15,6 +17,11 @@ public class Avaliador extends Usuario{
      */
     private String formacao;
 
+    /**
+     * Lista contendo as avaliações feitas pelo avaliador.
+     */
+    private List<Avaliacao> Avaliacoes;
+    
     public String getAreaAtuacao() {
         return areaAtuacao;
     }
@@ -29,6 +36,14 @@ public class Avaliador extends Usuario{
 
     public void setFormacao(String formacao) {
         this.formacao = formacao;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return Avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> Avaliacoes) {
+        this.Avaliacoes = Avaliacoes;
     }
     
     

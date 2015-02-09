@@ -5,6 +5,8 @@
  */
 package com.ardc.dis_trabfinal_core.entity;
 
+import java.util.List;
+
 /**
  *
  * @author alvesrc
@@ -21,6 +23,11 @@ public class Professor extends Usuario{
      */
     private String disciplinaPrincipal;
 
+    /**
+     * Lista de projetos que o professor orienta.
+     */
+    private List<Projeto> projetosOrientados;
+    
     public String getDepartamento() {
         return departamento;
     }
@@ -36,6 +43,15 @@ public class Professor extends Usuario{
     public void setDisciplinaPrincipal(String disciplinaPrincipal) {
         this.disciplinaPrincipal = disciplinaPrincipal;
     }
+
+    public List<Projeto> getProjetosOrientados() {
+        return projetosOrientados;
+    }
+
+    public void setProjetosOrientados(List<Projeto> projetosOrientados) {
+        this.projetosOrientados = projetosOrientados;
+    }
+    
     
     
 }

@@ -78,4 +78,31 @@ public class AlunoBusiness {
         return ConversorDatabase.getAluno(alunoDB);
     }
     
+    /**
+     * Método para listar os membros de um projeto.
+     * @param codProjeto O código do projeto a ser analisado.
+     * @return Uma lista contendo os alunos que participam do projeto.
+     */
+    public List<Aluno> listarMembrosProjeto(long codProjeto) {
+        List<Aluno> listagem = new ArrayList<>();
+        for (AlunoDB alunoDB : daoAluno.listarPorProjeto(codProjeto)) {
+            listagem.add(ConversorDatabase.getAluno(alunoDB));
+        }
+        return listagem;
+    }
+
+    /**
+     * Método para listar os alunos menos logados.
+     * @return Retorna uma lista contendo os alunos que menos logaram no sistema.
+     */
+    public List<Aluno> listarMenosLogado() {
+        List<Aluno> listagem = new ArrayList<>();
+        for (AlunoDB alunoDB : daoAluno.listar()) {
+            if (!alunoDB.getEmail().equals(auth.getUsuarioAtual().getEmail())) {
+                listagem.add(ConversorDatabase.getAluno(alunoDB));
+            }
+        }
+        return listagem;
+    }
+    
 }

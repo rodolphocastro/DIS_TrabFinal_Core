@@ -27,4 +27,10 @@ public interface DAOAlunoInterface extends DAOGenericoInterface{
      */
     public void alterar(AlunoDB aluno);
     
+    /**
+     * Método para listar alunos com base em um projeto.
+     * @param codProjeto O código do projeto.
+     * @return Uma lista conten do os alunos encontrados para o projeto informado.
+     */
+    public List<AlunoDB> listarPorProjeto(long codProjeto);
 }
