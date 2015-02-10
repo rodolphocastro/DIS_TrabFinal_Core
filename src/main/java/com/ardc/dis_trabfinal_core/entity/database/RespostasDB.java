@@ -20,7 +20,7 @@ public class RespostasDB implements Serializable{
      * Código para a resposta.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "respostasGenerator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "respostasGenerator")
     @SequenceGenerator(name = "respostasGenerator", sequenceName = "respostasGenerator", allocationSize = 1, initialValue = 1)
     private long codigo;
 

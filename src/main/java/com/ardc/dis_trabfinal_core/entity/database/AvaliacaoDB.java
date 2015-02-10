@@ -21,7 +21,7 @@ public class AvaliacaoDB implements Serializable{
      * Código da Avaliação.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "avaliacaoGenerator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "avaliacaoGenerator")
     @SequenceGenerator(name = "avaliacaoGenerator", sequenceName = "avaliacaoGenerator", allocationSize = 1, initialValue = 1)
     private long codigo;
 

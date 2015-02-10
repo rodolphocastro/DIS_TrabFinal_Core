@@ -12,14 +12,11 @@ import javax.persistence.SequenceGenerator;
  * @author ALVES, R.C.
  */
 @Entity(name = "perguntas")
-public class PerguntasDB implements Serializable{
-    
-    /**
-     * Código da pergunta.
-     */
+@SequenceGenerator(name = "perguntasGenerator", sequenceName = "perguntasGenerator", allocationSize = 1, initialValue = 1)
+public class PerguntasDB implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "perguntasGenerator")
-    @SequenceGenerator(name = "perguntasGenerator", sequenceName = "perguntasGenerator", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "perguntasGenerator")
     private long codigo;
 
     private String quadro1;

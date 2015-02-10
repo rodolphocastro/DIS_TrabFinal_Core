@@ -1,8 +1,10 @@
 package com.ardc.dis_trabfinal_core.business;
 
 import com.ardc.dis_trabfinal_core.dao.factory.DAOFactory;
+import com.ardc.dis_trabfinal_core.dao.interfaces.DAOAvaliacaoInterface;
 import com.ardc.dis_trabfinal_core.dao.interfaces.DAOAvaliadorInterface;
 import com.ardc.dis_trabfinal_core.entity.Avaliador;
+import com.ardc.dis_trabfinal_core.entity.database.AvaliacaoDB;
 import com.ardc.dis_trabfinal_core.entity.database.AvaliadorDB;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +21,10 @@ public class AvaliadorBusiness {
      */
     private DAOAvaliadorInterface daoAvaliador = DAOFactory.createDAOAvaliador();
     
+    /**
+     * DAO para acesso aos objetos da entidade avaliacao.
+     */
+    private DAOAvaliacaoInterface avaliacaoDAO = DAOFactory.createDAOAvaliacao();
     /**
      * Método para listar os avaliadores cadastrados no sistema.
      * @return Uma lista contendo os avaliadores.
@@ -58,8 +64,12 @@ public class AvaliadorBusiness {
      * Método para remover um avaliador do sistema.
      * @param emailAvaliador O e-mail do avaliador a ser removido.
      */
-    public void remover(String emailAvaliador) {
-        //Quando houverem avaliações, será necessário atualizar esse método. @alvesrc
-        daoAvaliador.remover(AvaliadorDB.class, emailAvaliador);
+    public boolean remover(String emailAvaliador) {
+        List<AvaliacaoDB> avaliacoes = avaliacaoDAO.listarPorAvaliador(emailAvaliador);
+        if (avaliacoes == null) {
+            daoAvaliador.remover(AvaliadorDB.class, emailAvaliador);
+            return true;
+        }
+        return false;
     }
 }

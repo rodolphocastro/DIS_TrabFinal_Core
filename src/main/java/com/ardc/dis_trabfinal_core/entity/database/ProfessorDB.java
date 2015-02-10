@@ -1,7 +1,9 @@
 package com.ardc.dis_trabfinal_core.entity.database;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import org.hibernate.annotations.ForeignKey;
 
@@ -24,6 +26,12 @@ public class ProfessorDB extends UsuarioDB implements Serializable{
      */
     private String disciplinaPrincipal;
 
+    /**
+     * Projetos que o professor orienta.
+     */
+    @OneToMany(mappedBy = "orientador")
+    private List<ProjetoDB> projetosOrientados;
+    
     //Getters & Setters gerados automaticamente.
     
     public String getDepartamento() {
@@ -40,6 +48,14 @@ public class ProfessorDB extends UsuarioDB implements Serializable{
 
     public void setDisciplinaPrincipal(String disciplinaPrincipal) {
         this.disciplinaPrincipal = disciplinaPrincipal;
+    }
+
+    public List<ProjetoDB> getProjetosOrientados() {
+        return projetosOrientados;
+    }
+
+    public void setProjetosOrientados(List<ProjetoDB> projetosOrientados) {
+        this.projetosOrientados = projetosOrientados;
     }
     
     

@@ -55,10 +55,13 @@ public class DAOGenerico implements Serializable, DAOGenericoInterface{
         //Iniciando uma transação com o banco de dados
         em.getTransaction().begin();
         //Fazendo o objeto persistir (Salvando)
+        System.out.format("Salvando objeto da classe %s.\n", obj.getClass().toString());
         em.persist(obj);
         //Fazendo commit da transação.
+        System.out.println("Fazendo commit...");
         em.getTransaction().commit();
         //Fechando a comunicação.
+        System.out.println("Fechando comunicação.");
         em.close();
     }
 

@@ -30,7 +30,7 @@ public class ProjetoDB implements Serializable{
      * Identificador do projeto.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projetoGenerator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "projetoGenerator")
     @SequenceGenerator(name = "projetoGenerator", sequenceName = "projetoGenerator", allocationSize = 1, initialValue = 1)
     private long codigo;
 

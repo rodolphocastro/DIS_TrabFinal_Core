@@ -25,6 +25,12 @@ public class AvaliadorDB extends UsuarioDB{
      */
     private String formacao;
 
+    /**
+     * Lista de avaliações efetuadas pelo avaliador.
+     */
+    @OneToMany(mappedBy = "avaliador")
+    private List<AvaliacaoDB> Avaliacoes;
+    
     public String getAreaAtuacao() {
         return areaAtuacao;
     }
@@ -39,6 +45,14 @@ public class AvaliadorDB extends UsuarioDB{
 
     public void setFormacao(String formacao) {
         this.formacao = formacao;
+    }
+
+    public List<AvaliacaoDB> getAvaliacoes() {
+        return Avaliacoes;
+    }
+
+    public void setAvaliacoes(List<AvaliacaoDB> Avaliacoes) {
+        this.Avaliacoes = Avaliacoes;
     }
     
     

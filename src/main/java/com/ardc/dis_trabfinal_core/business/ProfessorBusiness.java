@@ -2,8 +2,10 @@ package com.ardc.dis_trabfinal_core.business;
 
 import com.ardc.dis_trabfinal_core.dao.factory.DAOFactory;
 import com.ardc.dis_trabfinal_core.dao.interfaces.DAOProfessorInterface;
+import com.ardc.dis_trabfinal_core.dao.interfaces.DAOProjetoInterface;
 import com.ardc.dis_trabfinal_core.entity.Professor;
 import com.ardc.dis_trabfinal_core.entity.database.ProfessorDB;
+import com.ardc.dis_trabfinal_core.entity.database.ProjetoDB;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +20,11 @@ public class ProfessorBusiness {
      * DAO para acesso às entidades do tipo Professor.
      */
     private DAOProfessorInterface daoProf = DAOFactory.createDAOProfessor();
+    
+    /**
+     * DAO para acesso às entidades do tipo Projeto.
+     */
+    private DAOProjetoInterface projetoDAO = DAOFactory.createDAOProjeto();
     
     /**
      * Método para listar os professores cadastrados no sistema.
@@ -58,8 +65,12 @@ public class ProfessorBusiness {
      * Método para remover um professor do sistema.
      * @param emailProfessor O e-mail do professor a ser removido.
      */
-    public void remover(String emailProfessor) {
-        //Ao adicionar projetos, será necessário rever este método. @alvesrc
-        daoProf.remover(ProfessorDB.class, emailProfessor);
+    public boolean remover(String emailProfessor) {
+       List<ProjetoDB> projetos = projetoDAO.pesquisarPorOrientador(emailProfessor);
+        if (projetos == null) {
+            daoProf.remover(ProfessorDB.class, emailProfessor);
+            return true;
+        }
+        return false;
     }
 }
