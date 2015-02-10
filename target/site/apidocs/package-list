@@ -1,0 +1,8 @@
+com.ardc.dis_trabfinal_core.auth
+com.ardc.dis_trabfinal_core.business
+com.ardc.dis_trabfinal_core.dao
+com.ardc.dis_trabfinal_core.dao.factory
+com.ardc.dis_trabfinal_core.dao.interfaces
+com.ardc.dis_trabfinal_core.entity
+com.ardc.dis_trabfinal_core.entity.database
+com.ardc.dis_trabfinal_core.entry
